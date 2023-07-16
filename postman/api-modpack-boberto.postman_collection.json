@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "cba90f80-5b3a-4d20-ae88-b502e6c9b9b2",
+		"name": "api-modpack-boberto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14945275"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Finish",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"modpack do boberto\",\n    \"file_url\":\"http://minecraft.robertinho.net/test1/\",\n    \"client_ftp\": {\n        \"address\": \"localhost:21\",\n        \"user\": \"test\",\n        \"password\": \"test\",\n        \"directory\": \"/\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/client/modpack/finish/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"client",
+								"modpack",
+								"finish",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{modpack_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData=pm.response.json();",
+									"pm.environment.set(\"upload_id\", responseData[\"relationships\"][\"object\"][\"attribute\"][\"id\"])",
+									"pm.environment.set(\"event_id\", responseData[\"relationships\"][\"event\"][\"attribute\"][\"id\"])",
+									"pm.environment.set(\"modpack_id\", responseData[\"resource\"][\"attribute\"][\"id\"])"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"modpack do boberto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/client/modpack/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"client",
+								"modpack",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"modpack do boberto\",\n    \"author\":\"boberto\",\n    \"readme\":\"http://github.com.br/brutalzinn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/client/modpack/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"client",
+								"modpack",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{modpack_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Server",
+			"item": [
+				{
+					"name": "Finish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"server_ftp\": {\n        \"address\": \"localhost:21\",\n        \"user\": \"test\",\n        \"password\": \"test\",\n        \"directory\": \"/\"\n    },\n    \"pterodactyl_integration\": {\n        \"base_url\":\"\",\n        \"server_id\":\"\",\n        \"api_key\":\"\",\n        \"startup_cmd\":\"hello ptero!\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/modpack/finish/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"modpack",
+								"finish",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "vcxvx"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData=pm.response.json();",
+									"pm.environment.set(\"id\", responseData[\"data\"][\"id\"])"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "my_app_name_e533f3db&MGRjZWM3MDEtOTU2MC00MjM0LThjMjYtZmQ4ZDE1NDY4MmNl",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"modpack do boberto\",\n    \"author\":\"boberto\",\n    \"readme\":\"http://github.com.br/brutalzinn\",\n    \"version\":\"1.0.0\",\n    \"manifest_url\":\"http://minecraft.robertinho.net\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/client/modpack/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"client",
+								"modpack",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"modpack do boberto\",\n    \"author\":\"boberto\",\n    \"readme\":\"http://github.com.br/brutalzinn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/game/modpack/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"game",
+								"modpack",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "UploadClient",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/home/robertocpaes/Desktop/upload_test.zip"
+								},
+								{
+									"key": "event",
+									"value": "{{event_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/application/upload/:id?event={{event_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"application",
+								"upload",
+								":id"
+							],
+							"query": [
+								{
+									"key": "event",
+									"value": "{{event_id}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{upload_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "ApiKeys",
+					"item": [
+						{
+							"name": "GetApiKeys",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/application/apikey",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"application",
+										"apikey"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GenerateApiKey",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_name\":\"my_app_name\",\n    \"days\":365\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/application/apikey/generate",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"application",
+										"apikey",
+										"generate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Regenerate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_name\":\"water_block\",\n    \"days\":100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/application/apikey/regenerate/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"application",
+										"apikey",
+										"regenerate",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "fb2e4e46-7f51-4843-bfa8-638e867d497b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData=pm.response.json();",
+									"pm.environment.set(\"token\", responseData[\"data\"][\"attribute\"][\"access_token\"])"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"test\",\n    \"password\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"test\",\n    \"password\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
